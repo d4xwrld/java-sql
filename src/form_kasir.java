@@ -5,7 +5,7 @@
 
 /**
  *
- * @author d4x
+ * @author 62853
  */
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
@@ -48,10 +48,8 @@ public class form_kasir extends javax.swing.JFrame {
         hargaBarang = new javax.swing.JTextField();
         stokBarang = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
-        createButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        CheckProduct = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -108,15 +106,6 @@ public class form_kasir extends javax.swing.JFrame {
             }
         });
 
-        editButton.setBackground(new java.awt.Color(238, 255, 0));
-        editButton.setFont(new java.awt.Font("Swis721 BT", 0, 13)); // NOI18N
-        editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
-
         saveButton.setFont(new java.awt.Font("Swis721 BT", 0, 13)); // NOI18N
         saveButton.setText("Simpan");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,19 +114,11 @@ public class form_kasir extends javax.swing.JFrame {
             }
         });
 
-        createButton.setBackground(new java.awt.Color(0, 255, 0));
-        createButton.setFont(new java.awt.Font("Swis721 BT", 0, 13)); // NOI18N
-        createButton.setText("Create");
-        createButton.addActionListener(new java.awt.event.ActionListener() {
+        CheckProduct.setBackground(new java.awt.Color(212, 255, 0));
+        CheckProduct.setText("CEK");
+        CheckProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createButtonActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("CEK");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                CheckProductActionPerformed(evt);
             }
         });
 
@@ -151,7 +132,10 @@ public class form_kasir extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel4)
@@ -162,22 +146,15 @@ public class form_kasir extends javax.swing.JFrame {
                                                 .addComponent(jLabel5))))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(createButton)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(hargaBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                                         .addComponent(namaBarang)
                                         .addComponent(stokBarang, javax.swing.GroupLayout.Alignment.TRAILING))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(id_brg, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE))))))
+                                .addComponent(id_brg, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CheckProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 55, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jLabel2)))
@@ -192,13 +169,8 @@ public class form_kasir extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id_brg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jButton5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton)
-                    .addComponent(editButton)
-                    .addComponent(createButton))
-                .addGap(18, 18, 18)
+                    .addComponent(CheckProduct))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(namaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -211,8 +183,10 @@ public class form_kasir extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(stokBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(saveButton)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(deleteButton))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 400, 464));
@@ -242,42 +216,53 @@ public class form_kasir extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String id_Barang = id_brg.getText();
-        int idBarang = parseInt(id_Barang);
-        String nama_barang = namaBarang.getText();
-        String harga_barang = hargaBarang.getText();
-        Float harga_brg = parseFloat(harga_barang);
-        
-        String stok_barang = stokBarang.getText();
-        int stok_brg = parseInt(stok_barang);
-        
+    String id_Barang = id_brg.getText();
+    int idBarang = parseInt(id_Barang);
+    String nama_barang = namaBarang.getText();
+    String harga_barang = hargaBarang.getText();
+    Float harga_brg = parseFloat(harga_barang);
+    String stok_barang = stokBarang.getText();
+    int stok_brg = parseInt(stok_barang);
+
+    // Cek apakah ID barang sudah ada
+    String checkSql = "SELECT COUNT(*) FROM data_barang WHERE id_barang = ?";
     
-        String sql = "INSERT INTO data_barang (id_barang, nama_barang, harga, stok_unit) VALUES (?, ?, ?, ?)";
-
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setInt(1, idBarang);
-            statement.setString(2, nama_barang);
-            statement.setFloat(3, harga_brg);
-            statement.setInt(4, stok_brg);
-
-            statement.executeUpdate();
-        JOptionPane.showMessageDialog(this, "Data berhasil disimpan.", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan saat menyimpan data: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+         PreparedStatement checkStmt = connection.prepareStatement(checkSql)) {
+        
+        checkStmt.setInt(1, idBarang);
+        ResultSet resultSet = checkStmt.executeQuery();
+        if (resultSet.next() && resultSet.getInt(1) > 0) {
+            // Jika ID barang sudah ada, lakukan UPDATE
+            String updateSql = "UPDATE data_barang SET nama_barang = ?, harga = ?, stok_unit = ? WHERE id_barang = ?";
+            try (PreparedStatement updateStmt = connection.prepareStatement(updateSql)) {
+                updateStmt.setString(1, nama_barang);
+                updateStmt.setFloat(2, harga_brg);
+                updateStmt.setInt(3, stok_brg);
+                updateStmt.setInt(4, idBarang);
+                
+                updateStmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else {
+            // Jika ID barang belum ada, lakukan INSERT
+            String insertSql = "INSERT INTO data_barang (id_barang, nama_barang, harga, stok_unit) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement insertStmt = connection.prepareStatement(insertSql)) {
+                insertStmt.setInt(1, idBarang);
+                insertStmt.setString(2, nama_barang);
+                insertStmt.setFloat(3, harga_brg);
+                insertStmt.setInt(4, stok_brg);
+                
+                insertStmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Data berhasil disimpan.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-    }                                          
-
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }                                          
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-    }                                            
-
-    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
     }                                            
 
@@ -297,7 +282,7 @@ public class form_kasir extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                      
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void CheckProductActionPerformed(java.awt.event.ActionEvent evt) {                                             
         try {
         Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         String query = "SELECT * FROM data_barang WHERE id_barang = ?";
@@ -318,7 +303,7 @@ public class form_kasir extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
     }
-    }                                        
+    }                                            
 
     /**
      * @param args the command line arguments
@@ -356,12 +341,10 @@ public class form_kasir extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton createButton;
+    private javax.swing.JButton CheckProduct;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton editButton;
     private javax.swing.JTextField hargaBarang;
     private javax.swing.JTextField id_brg;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
